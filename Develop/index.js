@@ -1,4 +1,5 @@
 console.log("What is your Github user name?");
+const githubUID = process.argv[2];
 
 console.log("What is your favorite color?");
 const faveColor = ;
