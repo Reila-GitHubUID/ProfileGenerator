@@ -1,3 +1,8 @@
+console.log("What is your Github user name?");
+
+console.log("What is your favorite color?");
+const faveColor = ;
+
 const fs = require("fs");
 const util = require("util");
 
