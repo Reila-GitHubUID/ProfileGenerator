@@ -38,5 +38,7 @@ inquirer
     console.log(response);
 
     // Check the favorite color
+    var generateHTML = require("./generateHTML.js");
     console.log("My fave color is " + response.faveColor);
+    generateHTML.generateHTML(response.faveColor);
   });
