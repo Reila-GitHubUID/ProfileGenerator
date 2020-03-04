@@ -1,20 +1,20 @@
-const fs = require("fs");
-const util = require("util");
+// const fs = require("fs");
+// const util = require("util");
 
-const readFileAsync = util.promisify(fs.readFile);
-const writeFileAsync = util.promisify(fs.writeFile);
+// const readFileAsync = util.promisify(fs.readFile);
+// const writeFileAsync = util.promisify(fs.writeFile);
 
-const questions = [
+// const questions = [
   
-];
+// ];
 
-function writeToFile(fileName, data) {
+// function writeToFile(fileName, data) {
  
-}
+// }
 
-function init() {
+// function init() {
 
-init();
+// init();
 
 ////////////////////
 var inquirer = require("inquirer");
@@ -37,8 +37,11 @@ inquirer
 
     console.log(response);
 
-    // Check the favorite color
-    var generateHTML = require("./generateHTML.js");
+    // Check user's Github UID
+    console.log("My Github UID is " + response.username);
+
+    // Check user's favorite color
+    //var generateHTML = require("./generateHTML.js");
     console.log("My fave color is " + response.faveColor);
-    generateHTML.generateHTML(response.faveColor);
+    //generateHTML.generateHTML(response.faveColor);
   });
