@@ -1,19 +1,10 @@
-// const fs = require("fs");
-// const util = require("util");
+const fs = require("fs");
+const util = require("util");
 
-// const readFileAsync = util.promisify(fs.readFile);
-// const writeFileAsync = util.promisify(fs.writeFile);
+const readFileAsync = util.promisify(fs.readFile);
+const writeFileAsync = util.promisify(fs.writeFile);
 
-// function writeToFile(fileName, data) {
- 
-// }
-
-// function init() {
-// }
-
-// init();
-
-////////////////////
+// let userInput = {};
 var inquirer = require("inquirer");
 
 inquirer
@@ -32,11 +23,21 @@ inquirer
   ])
   .then(function(response) {
     // console.log(response);
-    const data = {
+    let userInput = {
         uid: response.username,
-        color = response.faveColor
-    };
+        color: response.faveColor
 
-    var generateHTML = require("./generateHTML.js");
-    generateHTML.generateHTML(data);
+    writeToFile ("EllinGithubProfile.pdf", userInput);
+    };
   });
+
+function writeToFile(fileName, data) {
+    try {
+        var generateHTML = require("./generateHTML.js");
+        generateHTML.generateHTML(data);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
