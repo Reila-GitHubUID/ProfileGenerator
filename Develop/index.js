@@ -4,15 +4,12 @@
 // const readFileAsync = util.promisify(fs.readFile);
 // const writeFileAsync = util.promisify(fs.writeFile);
 
-// const questions = [
-  
-// ];
-
 // function writeToFile(fileName, data) {
  
 // }
 
 // function init() {
+// }
 
 // init();
 
@@ -34,14 +31,12 @@ inquirer
     }
   ])
   .then(function(response) {
+    // console.log(response);
+    const data = {
+        uid: response.username,
+        color = response.faveColor
+    };
 
-    console.log(response);
-
-    // Check user's Github UID
-    console.log("My Github UID is " + response.username);
-
-    // Check user's favorite color
-    //var generateHTML = require("./generateHTML.js");
-    console.log("My fave color is " + response.faveColor);
-    //generateHTML.generateHTML(response.faveColor);
+    var generateHTML = require("./generateHTML.js");
+    generateHTML.generateHTML(data);
   });
