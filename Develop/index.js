@@ -8,7 +8,6 @@ var inquirer = require("inquirer");
 
 // the github api declarations
 var repositories;
-var repouri;
 
 // the read and write to files declarations
 const fs = require("fs");
@@ -36,35 +35,48 @@ inquirer
     }
   ])
   .then(function(response) {
-    // console.log(response);
     uid = response.username;
-
-    repouri = 'https://api.github.com/users/'+uid;
-    console.log("repouri = " + repouri);
-
+    const url = 'https://api.github.com/users/'+uid;
+    console.log("repouri = " + url);
+    getGitHubData(url);
+    
     userInput = {
         uid: uid,
-        color: response.faveColor
-
-    // writeToFile ("EllinGithubProfile.pdf", userInput);
+        color: response.faveColor    
+        // writeToFile ("EllinGithubProfile.pdf", userInput);
     };
   });
 
 
-// retrieving this user's information from Github API
-$.getJSON(repouri, function(json){
-    repositories = json;   
-    writeToFile(uid + ".pdf", userInput);                
-});
+  function getGitHubData(url) {
+    // retrieving this user's information from Github API
+    // $.ajax({
+    //     url,
+    //     method: "GET"
+    // }).then( function(response) {
+    //     console.log(response);
+    // });
+
+    // $.getJSON(url, function(json){
+    //     console.log(json);
+    //   });
+    var request = new XMLHttpRequest();
+
+    // Initialize a request
+    request.open('get', url, true);
+    // Send it
+    request.send();
+    console.log(request.response);
+  }
 
 
-function writeToFile(fileName, data) {
-    try {
-        var generateHTML = require("./generateHTML.js");
-        generateHTML.generateHTML(data);
-    } catch (err) {
-        console.log(err);
-    }
-}
+// function writeToFile(fileName, data) {
+//     try {
+//         var generateHTML = require("./generateHTML.js");
+//         generateHTML.generateHTML(data);
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
 
 
