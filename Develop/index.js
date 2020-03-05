@@ -8,6 +8,8 @@ var inquirer = require("inquirer");
 
 // the github api declarations
 var repositories;
+let uid;
+let color;
 
 // the read and write to files declarations
 const fs = require("fs");
@@ -36,15 +38,12 @@ inquirer
   ])
   .then(function(response) {
     uid = response.username;
+    color = response.faveColor;
     const url = 'https://api.github.com/users/'+uid;
     console.log("repouri = " + url);
     getGitHubData(url);
     
-    userInput = {
-        uid: uid,
-        color: response.faveColor    
-        // writeToFile ("EllinGithubProfile.pdf", userInput);
-    };
+    // writeToFile ("EllinGithubProfile.pdf", userInput);
   });
 
 

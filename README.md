@@ -42,7 +42,9 @@ When preparing a report for stakeholders, it is important to have up-to-date inf
 
 * Functional, deployed application.
 
-* GitHub repository with a unique name and a README describing project.
+* GitHub repository with a unique name and 
+
+* ---->  a README describing project.
 
 * The application generates a PDF resume from the user provided GitHub profile.
 
