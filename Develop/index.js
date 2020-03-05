@@ -6,10 +6,6 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
 
-// the github api declarations
-let uid;
-let color;
-
 // the read and write to files declarations
 const fs = require("fs");
 const util = require("util");
@@ -35,12 +31,10 @@ inquirer
       name: "faveColor"
     }
   ])
-  .then(function(response) {
-    uid = response.username;
-    color = response.faveColor;
-    const url = 'https://api.github.com/users/'+uid;
-    console.log("repouri = " + url);
-    console.log("color = " + color);
+  .then(function({username, faveColor}) {
+    const url = `https://api.github.com/users/${username}`;
+    console.log("url = " + url);
+    console.log("color = " + faveColor);
     getGitHubData(url);
     
     // writeToFile ("EllinGithubProfile.pdf", userInput);
