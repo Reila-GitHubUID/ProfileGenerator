@@ -1,6 +1,6 @@
-//*************************//
-//***** Declarations ******//
-//*************************//
+//*************************************//
+//***         Declarations          ***//
+//*************************************//
 
 // the user prompt declarations
 let userInput;
@@ -15,9 +15,9 @@ const util = require("util");
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
-//*************************//
-//******* Main code *******//
-//*************************//
+//*************************************//
+//***         Main code             ***//
+//*************************************//
 
 // prompting users with questions of his/her Github uid, and his/her favorite color
 inquirer
