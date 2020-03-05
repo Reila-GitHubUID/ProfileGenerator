@@ -3,11 +3,10 @@
 //*************************************//
 
 // the user prompt declarations
-let userInput;
-var inquirer = require("inquirer");
+const inquirer = require("inquirer");
+const axios = require("axios");
 
 // the github api declarations
-var repositories;
 let uid;
 let color;
 
@@ -41,6 +40,7 @@ inquirer
     color = response.faveColor;
     const url = 'https://api.github.com/users/'+uid;
     console.log("repouri = " + url);
+    console.log("color = " + color);
     getGitHubData(url);
     
     // writeToFile ("EllinGithubProfile.pdf", userInput);
@@ -48,24 +48,17 @@ inquirer
 
 
   function getGitHubData(url) {
-    // retrieving this user's information from Github API
-    // $.ajax({
-    //     url,
-    //     method: "GET"
-    // }).then( function(response) {
-    //     console.log(response);
-    // });
+    axios
+      .get(url)
+      .then(function(res) {
+        console.log("****************");
+        console.log(res);
+      })
+      .catch (e => {
+        console.log("ERROR!!!");
+      });
 
-    // $.getJSON(url, function(json){
-    //     console.log(json);
-    //   });
-    var request = new XMLHttpRequest();
 
-    // Initialize a request
-    request.open('get', url, true);
-    // Send it
-    request.send();
-    console.log(request.response);
   }
 
 
