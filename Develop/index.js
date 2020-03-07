@@ -6,6 +6,8 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
 
+const result = {};
+
 // the read and write to files declarations
 const fs = require("fs");
 const util = require("util");
@@ -47,6 +49,17 @@ inquirer
       .then(function(res) {
         console.log("****************");
         console.log(res);
+
+        // result = {
+        //   name: res.name,
+        //   pic: res.avatar_url,
+        //   location: res.location,
+        //   bio: res.bio,
+        //   publicRepos: res.public_repos,
+        //   stars: res. ,
+        //   followers: res.followers,
+        //   following: res.following
+        // };
       })
       .catch (e => {
         console.log("ERROR!!!");
