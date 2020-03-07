@@ -47,35 +47,36 @@ inquirer
     axios
       .get(url)
       .then(function(res) {
+        //const resu = JSON.parse(res);
         console.log("****************");
-        //console.log(res);
-        console.log(res.name);
+        // console.log(res);
+        console.log(res.data.name);
 
-        result = {
-          name: res.name,
-          pic: res.avatar_url,
-          location: res.location,
-          bio: res.bio,
-          publicRepos: res.public_repos,
-          followers: res.followers,
-          following: res.following
-        };
+        // result = {
+        //   name: res.name,
+        //   pic: res.avatar_url,
+        //   location: res.location,
+        //   bio: res.bio,
+        //   publicRepos: res.public_repos,
+        //   followers: res.followers,
+        //   following: res.following
+        // };
 
-        let starredURL = JSON.stringify(result.starred_url);
-        console.log("OLD starredURL ======== " + starredURL);
-        // starredURL = starredURL.substr(0, s.indexOf('{'));
-        starredURL = starredURL.substring(`{`)[0];
-        console.log("NEW starredURL ======== " + starredURL);
+        // let starredURL = JSON.stringify(result.starred_url);
+        // console.log("OLD starredURL ======== " + starredURL);
+        // // starredURL = starredURL.substr(0, s.indexOf('{'));
+        // starredURL = starredURL.substring(`{`)[0];
+        // console.log("NEW starredURL ======== " + starredURL);
 
-        axios
-          .get(trimStarredURL)
-          .then (function(r) {
-            console.log("##########");
-            console.log(r);
-          })
-          .catch (e => {
-            console.log("ERROR2!!!")
-          });
+        // axios
+        //   .get(trimStarredURL)
+        //   .then (function(r) {
+        //     console.log("##########");
+        //     console.log(r);
+        //   })
+        //   .catch (e => {
+        //     console.log("ERROR2!!!")
+        //   });
         
       })
       .catch (e => {
