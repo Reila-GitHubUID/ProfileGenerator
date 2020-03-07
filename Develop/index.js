@@ -84,7 +84,6 @@ inquirer
 
   
 
-
 // function writeToFile(fileName, data) {
 //     try {
 //         var generateHTML = require("./generateHTML.js");
