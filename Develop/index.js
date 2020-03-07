@@ -6,7 +6,7 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
 
-const result = {};
+let result = {};
 
 // the read and write to files declarations
 const fs = require("fs");
@@ -48,21 +48,38 @@ inquirer
       .get(url)
       .then(function(res) {
         console.log("****************");
-        console.log(res);
+        //console.log(res);
+        console.log(res.name);
 
-        // result = {
-        //   name: res.name,
-        //   pic: res.avatar_url,
-        //   location: res.location,
-        //   bio: res.bio,
-        //   publicRepos: res.public_repos,
-        //   stars: res. ,
-        //   followers: res.followers,
-        //   following: res.following
-        // };
+        result = {
+          name: res.name,
+          pic: res.avatar_url,
+          location: res.location,
+          bio: res.bio,
+          publicRepos: res.public_repos,
+          followers: res.followers,
+          following: res.following
+        };
+
+        let starredURL = JSON.stringify(result.starred_url);
+        console.log("OLD starredURL ======== " + starredURL);
+        // starredURL = starredURL.substr(0, s.indexOf('{'));
+        starredURL = starredURL.substring(`{`)[0];
+        console.log("NEW starredURL ======== " + starredURL);
+
+        axios
+          .get(trimStarredURL)
+          .then (function(r) {
+            console.log("##########");
+            console.log(r);
+          })
+          .catch (e => {
+            console.log("ERROR2!!!")
+          });
+        
       })
       .catch (e => {
-        console.log("ERROR!!!");
+        console.log("ERROR!!!" + e);
       });
 
 
