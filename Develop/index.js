@@ -37,9 +37,7 @@ inquirer
     const url = `https://api.github.com/users/${username}`;
     console.log("url = " + url);
     console.log("color = " + faveColor);
-    getGitHubData(url);
-    
-    // writeToFile ("EllinGithubProfile.pdf", userInput);
+    getGitHubData(url);    
   });
 
 
@@ -47,47 +45,44 @@ inquirer
     axios
       .get(url)
       .then(function(res) {
-        console.log("****************");
-        // console.log(res);
-        //console.log(res.data.name);
 
-       result = {
-          name:  res.data.name,
-          pic: res.data.avatar_url,
-          location: res.data.location,
-          bio: res.data.bio,
-          publicRepos: res.data.public_repos,
-          followers: res.data.followers,
-          following: res.data.following
-        };
+        result = {
+            githubUID: res.data.login,
+            name:  res.data.name,
+            pic: res.data.avatar_url,
+            location: res.data.location,
+            bio: res.data.bio,
+            publicRepos: res.data.public_repos,
+            followers: res.data.followers,
+            following: res.data.following
+          };
 
-        let starredURL = res.data.starred_url;
-        console.log("OLD starredURL ======== " + starredURL);
-        starredURL = starredURL.substr(0, starredURL.indexOf('{'));
-        console.log("NEW starredURL ======== " + starredURL);
+          let starredURL = res.data.starred_url;
+          starredURL = starredURL.substr(0, starredURL.indexOf('{'));
 
-        axios
-          .get(starredURL)
-          .then (function(r) {
-            console.log("##########");
-            result = {...result, githubStars: r.data.length};
-            console.log("the length is ====== " + r.data.length);
+          axios
+            .get(starredURL)
+            .then (function(r) {
+              result = {...result, githubStars: r.data.length};
+              
+              console.log("%%%%%%%%%%%%");
+              console.log(result);
+              console.log(`${result.githubUID}.pdf`);
+              console.log(`_${result.name}.pdf`);
 
-          })
-          .catch (e => {
-            console.log("ERROR2!!!")
-          });
-      })
-      .catch (e => {
-        console.log("ERROR!!!" + e);
-      });
+              //writeToFile (`${username}_${result.name}.pdf`, result);
 
-  }
+            })
+            .catch (e => {
+              console.log("ERROR2!!!")
+            });
+        })
+        .catch (e => {
+          console.log("ERROR!!!" + e);
+        });
+    }
 
- 
-            
-  console.log("%%%%%%%%%%%%");
-  console.log(result); 
+  
 
 
 // function writeToFile(fileName, data) {
