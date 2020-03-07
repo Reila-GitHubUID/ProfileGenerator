@@ -70,19 +70,24 @@ inquirer
           .get(starredURL)
           .then (function(r) {
             console.log("##########");
-            console.log(r);
+            result = {...result, githubStars: r.data.length};
+            console.log("the length is ====== " + r.data.length);
+
           })
           .catch (e => {
             console.log("ERROR2!!!")
           });
-        
       })
       .catch (e => {
         console.log("ERROR!!!" + e);
       });
 
-
   }
+
+ 
+            
+  console.log("%%%%%%%%%%%%");
+  console.log(result); 
 
 
 // function writeToFile(fileName, data) {
