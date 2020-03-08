@@ -76,12 +76,13 @@ function getGitHubData(url) {
             writeFileAsync(`./${result.githubUID}.html`, generateHTML.generateHTML(result))
             .then(function() {
               console.log(`Successfully created ${result.githubUID}.html file`);
-              
+
               const html = fs.readFileSync(`./${result.githubUID}.html`, 'utf8');
-              const options = { format: 'Letter' };
+              const options = { format: 'Tabloid' };
               pdf.create(html, options).toFile(`./${result.githubUID}.pdf`, function(err, res) {
-                if (err) return console.log(err);
-                console.log(res); 
+                if (err) 
+                  return console.log(err);
+                console.log(`Successfully created ${result.githubUID}.pdf file`); 
               });
             });
 
@@ -90,9 +91,6 @@ function getGitHubData(url) {
           catch (err) {
             console.log("generateHTML Error: " + err);
           }
-          console.log("//**************************/");
-
-
         })
         .catch(e => {
           console.log("ERROR2!!!" + e);

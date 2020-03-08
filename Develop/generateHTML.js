@@ -26,8 +26,6 @@ const colors = {
 };
 
 function generateHTML(data) {
-  console.log("****$*$*$*$*$*$*$****")
-  console.log("my color is " + data.color);
   return `<!DOCTYPE html>
   <html lang="en">
    <head>
@@ -36,7 +34,7 @@ function generateHTML(data) {
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
       <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
-      <title>${data.githubUID} Profile</title>
+      <title>${data.githubUID}'s Profile</title>
       <style>
         @page {
           margin: 0;
@@ -58,6 +56,7 @@ function generateHTML(data) {
         .wrapper {
           background-color: ${colors[data.color].wrapperBackground};
           padding-top: 100px;
+          height: 50%;
         }
 
         body {
@@ -170,7 +169,7 @@ function generateHTML(data) {
         .elCard {
           position: relative;
           margin: 0 auto;
-          margin-bottom: 0px;
+          margin-bottom: 10px;
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
