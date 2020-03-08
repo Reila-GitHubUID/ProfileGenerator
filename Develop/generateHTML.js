@@ -199,24 +199,43 @@ function generateHTML(data) {
       <div class="wrapper"></div>
 
       <!-- The main content -->
-      <div>
+      <main>
         <div class="col photo-header">
           
             <img src="${data.pic}"></img>
             <h1>h1: Hi!</h1>
             <h2>h2: My name is ${data.name}</h2>
             <h4>h4: ${data.bio}</h4>
-            <h6 class="row nav-link">${data.location}</h6>
-            <h6 class="row nav-link">${data.githubURL}</h6>
+            <h6 class="row nav-link"><a href="">${data.location}</a></h6>
+            <h6 class="row nav-link"><a href="">${data.githubURL}</a></h6>
           
         </div>
-      </div>
-      <div class="container col">Hello!
-        <div class="card">Public Repositories</div>
-        <div class="card">Followers</div>
-        <div class="card">GitHub Stars</div>
-        <div class="card">Following</div>
-      </div>
+      
+
+        <div class="container col">
+          <h2>Hello!</h2>
+          <div class="row col">
+              <div class="elCard">
+                <h4>Public Repositories</h4>
+                <h6>BOOM!</h6>
+              </div>
+              <div class="elCard">
+                <h4 class="elCard">Followers</h4>
+                <h6>${data.followers}</h6>
+              </div>
+          </div>
+          <div class="row col">
+              <div class="elCard">
+                <h4>GitHub Stars</h4>
+                <h6>${data.githubStars}</h6>
+              </div>
+              <div class="elCard">
+                <h4 class="elCard">Following</h4>
+                <h6>${data.following}</h6>
+              </div>
+          </div>
+        </div>
+      </main>
 
       <!-- END of main content -->
 

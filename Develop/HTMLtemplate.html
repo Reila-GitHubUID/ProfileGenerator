@@ -93,7 +93,7 @@
           object-fit: cover;
           margin-top: -75px;
           border: 6px solid #FEE24C;
-          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
+          box-shadow: rgba(14, 5, 5, 0.3) 4px 1px 20px 4px;
         }
 
         .photo-header h1, .photo-header h2 {
@@ -145,6 +145,26 @@
           color: white;
           margin: 20px;
         }
+
+        .elCard {
+          position: relative;
+          margin: 0 auto;
+          margin-bottom: 0px;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          background-color: #FF8374;
+          color: white;
+          padding: 10px;
+          width: 45%;
+          border-radius: 6px;          
+        }
+        
+        .elCard h4, .elCard h6 {
+          margin-top: 10px;
+          width: 100%;
+          text-align: center;
+        }
          
         .col {
           flex: 1;
@@ -170,26 +190,42 @@
       <div class="wrapper"></div>
 
       <!-- The main content -->
-      <div>
+      <main>
         <div class="col photo-header">
           
             <img src="https://image.shutterstock.com/image-photo/axolotl-ambystoma-mexicanum-front-salamander-600w-1462162238.jpg"></img>
             <h1>h1: Hi!</h1>
             <h2>h2: My name is FIRSTNAME LASTNAME</h2>
             <h2>h2: ;lkajsld;kfj;lkjasl;kdfj</h2>
-            <h3 class="nav-link">h3: GitHub</h3>
-            <h4 class="row nav-link">h4: Location</h4>
-            <h5 class="row nav-link">h5: Blog</h5>
+            <h6 class="row nav-link">h6: Tadaaa!!</h6>
             <h6 class="row nav-link">h6: Tadaaa!!</h6>
           
         </div>
+      
+      <div class="container col">
+        <h2>Hello!</h2>
+        <div class="row col">
+            <div class="elCard">
+              <h4>Public Repositories</h4>
+              <h6>BOOM!</h6>
+            </div>
+            <div class="elCard">
+              <h4 class="elCard">Followers</h4>
+              <h6>BOOM!</h6>
+            </div>
+        </div>
+        <div class="row col">
+            <div class="elCard">
+              <h4>GitHub Stars</h4>
+              <h6>BOOM!</h6>
+            </div>
+            <div class="elCard">
+              <h4 class="elCard">Following</h4>
+              <h6>BOOM!</h6>
+            </div>
+        </div>
       </div>
-      <div class="container col">Hello!
-        <div class="card">Public Repositories</div>
-        <div class="card">Followers</div>
-        <div class="card">GitHub Stars</div>
-        <div class="card">Following</div>
-      </div>
+      </main>
 
       <!-- END of main content -->
 
