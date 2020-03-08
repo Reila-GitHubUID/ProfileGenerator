@@ -5,6 +5,8 @@
 // the user prompt declarations
 const inquirer = require("inquirer");
 const axios = require("axios");
+const pdf = require('html-pdf');
+
 
 let result = {};
 
@@ -76,10 +78,18 @@ function getGitHubData(url) {
 
           console.log("//**************************/");
           try {
-            var generateHTML = require("./generateHTML.js");
-            writeFileAsync(`${result.githubUID}.html`, generateHTML.generateHTML(result))
+            const generateHTML = require("./generateHTML.js");
+            writeFileAsync(`./${result.githubUID}.html`, generateHTML.generateHTML(result))
             .then(function() {
               console.log(`Successfully created ${result.githubUID}.html file`);
+            });
+
+            
+            const html = fs.readFileSync(`./${result.githubUID}.html`, 'utf8');
+            const options = { format: 'Letter' };
+            pdf.create(html, options).toFile(`./${result.githubUID}.pdf`, function(err, res) {
+              if (err) return console.log(err);
+              console.log(res); 
             });
           } 
           catch (err) {
