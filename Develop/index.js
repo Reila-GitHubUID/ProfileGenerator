@@ -77,14 +77,13 @@ function getGitHubData(url) {
           console.log("//**************************/");
           try {
             var generateHTML = require("./generateHTML.js");
-            // generateHTML.generateHTML(result, color);
             writeFileAsync(`${result.githubUID}.html`, generateHTML.generateHTML(result))
             .then(function() {
               console.log(`Successfully created ${result.githubUID}.html file`);
             });
           } 
           catch (err) {
-            console.log("generateHTML Error" + err);
+            console.log("generateHTML Error: " + err);
           }
           console.log("//**************************/");
 
@@ -97,9 +96,4 @@ function getGitHubData(url) {
     .catch(e => {
       console.log("ERROR!!!" + e);
     });
-}
-
-  
-
-function writeToFile(data, color) {
 }

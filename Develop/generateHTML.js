@@ -36,7 +36,7 @@ function generateHTML(data) {
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
       <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
-      <title>${data.name} - ${data.githubUID} Profile</title>
+      <title>${data.githubUID} Profile</title>
       <style>
         @page {
           margin: 0;
@@ -232,7 +232,9 @@ function generateHTML(data) {
       
 
         <div class="container col">
-          <h2>${data.bio}</h2>
+          &nbsp;
+          <h4>&nbsp;${data.bio}&nbsp;</h4>
+          &nbsp;
           <div class="row col">
               <div class="elCard">
                 <h4>Public Repositories</h4>
