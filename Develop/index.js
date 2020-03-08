@@ -71,26 +71,21 @@ function getGitHubData(url) {
         .then(function (r) {
           result = { ...result, githubStars: r.data.length };
 
-          console.log("%%%%%%%%%%%%");
-          console.log(result);
-          console.log(`${result.githubUID}.pdf`);
-          console.log(`_${result.name}.pdf`);
-
-          console.log("//**************************/");
           try {
             const generateHTML = require("./generateHTML.js");
             writeFileAsync(`./${result.githubUID}.html`, generateHTML.generateHTML(result))
             .then(function() {
               console.log(`Successfully created ${result.githubUID}.html file`);
+              
+              const html = fs.readFileSync(`./${result.githubUID}.html`, 'utf8');
+              const options = { format: 'Letter' };
+              pdf.create(html, options).toFile(`./${result.githubUID}.pdf`, function(err, res) {
+                if (err) return console.log(err);
+                console.log(res); 
+              });
             });
 
             
-            const html = fs.readFileSync(`./${result.githubUID}.html`, 'utf8');
-            const options = { format: 'Letter' };
-            pdf.create(html, options).toFile(`./${result.githubUID}.pdf`, function(err, res) {
-              if (err) return console.log(err);
-              console.log(res); 
-            });
           } 
           catch (err) {
             console.log("generateHTML Error: " + err);
