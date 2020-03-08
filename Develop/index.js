@@ -35,60 +35,70 @@ inquirer
   ])
   .then(function({username, faveColor}) {
     const url = `https://api.github.com/users/${username}`;
-    console.log("url = " + url);
-    console.log("color = " + faveColor);
+
+    result = {
+        color: faveColor, 
+        githubUID: username
+    }
     getGitHubData(url);    
   });
 
 
-  function getGitHubData(url) {
-    axios
-      .get(url)
-      .then(function(res) {
+function getGitHubData(url) {
+  axios
+    .get(url)
+    .then(function (res) {
 
-        result = {
-            githubUID: res.data.login,
-            name:  res.data.name,
-            pic: res.data.avatar_url,
-            location: res.data.location,
-            bio: res.data.bio,
-            publicRepos: res.data.public_repos,
-            followers: res.data.followers,
-            following: res.data.following
-          };
+      result = {
+        ...result,
+        name: res.data.name,
+        pic: res.data.avatar_url,
+        location: res.data.location,
+        bio: res.data.bio,
+        publicRepos: res.data.public_repos,
+        followers: res.data.followers,
+        following: res.data.following
+      };
 
-          let starredURL = res.data.starred_url;
-          starredURL = starredURL.substr(0, starredURL.indexOf('{'));
+      let starredURL = res.data.starred_url;
+      starredURL = starredURL.substr(0, starredURL.indexOf('{'));
 
-          axios
-            .get(starredURL)
-            .then (function(r) {
-              result = {...result, githubStars: r.data.length};
-              
-              console.log("%%%%%%%%%%%%");
-              console.log(result);
-              console.log(`${result.githubUID}.pdf`);
-              console.log(`_${result.name}.pdf`);
+      axios
+        .get(starredURL)
+        .then(function (r) {
+          result = { ...result, githubStars: r.data.length };
 
-              //writeToFile (`${username}_${result.name}.pdf`, result);
+          console.log("%%%%%%%%%%%%");
+          console.log(result);
+          console.log(`${result.githubUID}.pdf`);
+          console.log(`_${result.name}.pdf`);
 
-            })
-            .catch (e => {
-              console.log("ERROR2!!!")
+          console.log("//**************************/");
+          try {
+            var generateHTML = require("./generateHTML.js");
+            // generateHTML.generateHTML(result, color);
+            writeFileAsync(`${result.githubUID}.html`, generateHTML.generateHTML(result))
+            .then(function() {
+              console.log(`Successfully created ${result.githubUID}.html file`);
             });
+          } 
+          catch (err) {
+            console.log("generateHTML Error" + err);
+          }
+          console.log("//**************************/");
+
+
         })
-        .catch (e => {
-          console.log("ERROR!!!" + e);
+        .catch(e => {
+          console.log("ERROR2!!!" + e);
         });
-    }
+    })
+    .catch(e => {
+      console.log("ERROR!!!" + e);
+    });
+}
 
   
 
-// function writeToFile(fileName, data) {
-//     try {
-//         var generateHTML = require("./generateHTML.js");
-//         generateHTML.generateHTML(data);
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
+function writeToFile(data, color) {
+}
