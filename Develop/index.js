@@ -54,6 +54,7 @@ function getGitHubData(url) {
         name: res.data.name,
         pic: res.data.avatar_url,
         location: res.data.location,
+        githubURL: res.data.html_url,
         bio: res.data.bio,
         publicRepos: res.data.public_repos,
         followers: res.data.followers,

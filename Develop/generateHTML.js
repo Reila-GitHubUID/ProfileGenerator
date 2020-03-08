@@ -167,6 +167,26 @@ function generateHTML(data) {
           margin-bottom: 20px;
         }
 
+        .elCard {
+          position: relative;
+          margin: 0 auto;
+          margin-bottom: 0px;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          background-color: ${colors[data.color].headerBackground};
+          color: ${colors[data.color].headerColor};
+          padding: 10px;
+          width: 45%;
+          border-radius: 6px;        
+        }
+        
+        .elCard h4, .elCard h6 {
+          margin-top: 10px;
+          width: 100%;
+          text-align: center;
+        }
+
         .card {
           padding: 20px;
           border-radius: 6px;
@@ -203,24 +223,23 @@ function generateHTML(data) {
         <div class="col photo-header">
           
             <img src="${data.pic}"></img>
-            <h1>h1: Hi!</h1>
-            <h2>h2: My name is ${data.name}</h2>
-            <h4>h4: ${data.bio}</h4>
+            <h1>Hi!</h1>
+            <h2>My name is ${data.name}</h2>
             <h6 class="row nav-link"><a href="">${data.location}</a></h6>
-            <h6 class="row nav-link"><a href="">${data.githubURL}</a></h6>
+            <h6 class="row nav-link"><a href="${data.githubURL}">GitHub</a></h6>
           
         </div>
       
 
         <div class="container col">
-          <h2>Hello!</h2>
+          <h2>${data.bio}</h2>
           <div class="row col">
               <div class="elCard">
                 <h4>Public Repositories</h4>
-                <h6>BOOM!</h6>
+                <h6>${data.publicRepos}</h6>
               </div>
               <div class="elCard">
-                <h4 class="elCard">Followers</h4>
+                <h4>Followers</h4>
                 <h6>${data.followers}</h6>
               </div>
           </div>
@@ -230,7 +249,7 @@ function generateHTML(data) {
                 <h6>${data.githubStars}</h6>
               </div>
               <div class="elCard">
-                <h4 class="elCard">Following</h4>
+                <h4>Following</h4>
                 <h6>${data.following}</h6>
               </div>
           </div>
