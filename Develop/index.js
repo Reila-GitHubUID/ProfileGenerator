@@ -73,13 +73,13 @@ function getGitHubData(url) {
 
           try {
             const generateHTML = require("./generateHTML.js");
-            writeFileAsync(`./${result.githubUID}.html`, generateHTML.generateHTML(result))
+            writeFileAsync(`../Assets/${result.githubUID}.html`, generateHTML.generateHTML(result))
             .then(function() {
               console.log(`Successfully created ${result.githubUID}.html file`);
 
-              const html = fs.readFileSync(`./${result.githubUID}.html`, 'utf8');
+              const html = fs.readFileSync(`../Assets/${result.githubUID}.html`, 'utf8');
               const options = { format: 'Tabloid' };
-              pdf.create(html, options).toFile(`./${result.githubUID}.pdf`, function(err, res) {
+              pdf.create(html, options).toFile(`../Assets/${result.githubUID}.pdf`, function(err, res) {
                 if (err) 
                   return console.log(err);
                 console.log(`Successfully created ${result.githubUID}.pdf file`); 
