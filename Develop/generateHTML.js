@@ -69,7 +69,6 @@ function generateHTML(data) {
         main {
           background-color: #E9EDEE;
           height: auto;
-          padding-top: 30px;
         }
          
         h1, h2, h3, h4, h5, h6 {
