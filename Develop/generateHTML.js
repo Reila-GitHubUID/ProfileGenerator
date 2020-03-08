@@ -195,7 +195,35 @@ function generateHTML(data) {
     </head>
 
     <body>
-      <main class="wrapper"> Test</main>
+      <!-- The solid head-->
+      <div class="wrapper"></div>
+
+      <!-- The main content -->
+      <div>
+        <div class="col photo-header">
+          
+            <img src="${data.pic}"></img>
+            <h1>h1: Hi!</h1>
+            <h2>h2: My name is ${data.name}</h2>
+            <h4>h4: ${data.bio}</h4>
+            <h6 class="row nav-link">${data.location}</h6>
+            <h6 class="row nav-link">${data.githubURL}</h6>
+          
+        </div>
+      </div>
+      <div class="container col">Hello!
+        <div class="card">Public Repositories</div>
+        <div class="card">Followers</div>
+        <div class="card">GitHub Stars</div>
+        <div class="card">Following</div>
+      </div>
+
+      <!-- END of main content -->
+
+
+      <!-- The solid foot-->
+      <div class="wrapper"></div> 
+
     </body>
   </html>`
 }
