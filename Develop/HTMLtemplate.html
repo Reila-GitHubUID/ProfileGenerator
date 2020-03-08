@@ -1,34 +1,4 @@
-const colors = {
-  Green: {
-    wrapperBackground: "#E6E1C3",
-    headerBackground: "#C1C72C",
-    headerColor: "black",
-    photoBorderColor: "#black"
-  },
-  Blue: {
-    wrapperBackground: "#5F64D3",
-    headerBackground: "#26175A",
-    headerColor: "white",
-    photoBorderColor: "#73448C"
-  },
-  Pink: {
-    wrapperBackground: "#879CDF",
-    headerBackground: "#FF8374",
-    headerColor: "white",
-    photoBorderColor: "#FEE24C"
-  },
-  Red: {
-    wrapperBackground: "#DE9967",
-    headerBackground: "#870603",
-    headerColor: "white",
-    photoBorderColor: "white"
-  }
-};
-
-function generateHTML(data) {
-  console.log("****$*$*$*$*$*$*$****")
-  console.log("my color is " + data.color);
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="en">
    <head>
       <meta charset="UTF-8" />
@@ -36,7 +6,7 @@ function generateHTML(data) {
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
       <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
-      <title>${data.name} - ${data.githubUID} Profile</title>
+      <title>Vanessa Emerick - vavarooks Profile</title>
       <style>
         @page {
           margin: 0;
@@ -56,7 +26,7 @@ function generateHTML(data) {
         }
 
         .wrapper {
-          background-color: ${colors[data.color].wrapperBackground};
+          background-color: #879CDF;
           padding-top: 100px;
         }
 
@@ -108,8 +78,8 @@ function generateHTML(data) {
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
-          background-color: ${colors[data.color].headerBackground};
-          color: ${colors[data.color].headerColor};
+          background-color: #FF8374;
+          color: white;
           padding: 10px;
           width: 95%;
           border-radius: 6px;
@@ -121,7 +91,7 @@ function generateHTML(data) {
           border-radius: 50%;
           object-fit: cover;
           margin-top: -75px;
-          border: 6px solid ${colors[data.color].photoBorderColor};
+          border: 6px solid #FEE24C;
           box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
         }
 
@@ -170,8 +140,8 @@ function generateHTML(data) {
         .card {
           padding: 20px;
           border-radius: 6px;
-          background-color: ${colors[data.color].headerBackground};
-          color: ${colors[data.color].headerColor};
+          background-color: #FF8374;
+          color: white;
           margin: 20px;
         }
          
@@ -195,13 +165,11 @@ function generateHTML(data) {
     </head>
 
     <body>
-      <main class="wrapper"> Test</main>
+      <div class="wrapper"></div>
+      <div class="card">
+        <main> Test</main>
+      </div>
+      <div class="wrapper"></div>
+
     </body>
-  </html>`
-}
-
-
-// module.exports is an object we use to store variables or methods
-module.exports = {
-  generateHTML
-};
+  </html>
